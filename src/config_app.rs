@@ -12,7 +12,7 @@ pub struct Config {
 
 // Пропарсим конфигурационный файл
 pub fn parse() -> Result<Config, std::io::Error> {
-    let path = "./src/config.json";
+    let path = "./config.json";
     let conf_string = fs::read_to_string(path)?;
     let config: Config = serde_json::from_str(&conf_string)?;
     Result::Ok(config)

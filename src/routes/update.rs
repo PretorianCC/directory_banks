@@ -1,6 +1,7 @@
-use crate::config_app::{parse, Config};
+use crate::config_app::Config;
 use crate::database::connection;
 use crate::database::record_bank::RecordBank;
+use rocket::State;
 
 #[get("/")]
 pub fn index() -> &'static str {
@@ -8,12 +9,7 @@ pub fn index() -> &'static str {
 }
 
 #[get("/<key>")]
-pub fn update(key: &str) -> String {
-    let config: Config = match parse() {
-        Ok(i) => i,
-        Err(e) => return e.to_string(),
-    };
-
+pub fn update(config: &State<Config>, key: &str) -> String {
     // ключи не совпадают, ошибка
     if &config.key_update[..] != key {
         return "Error key".to_string();

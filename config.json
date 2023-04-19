@@ -1,0 +1,7 @@
+{
+  "host": "127.0.0.1",
+  "port": 3001,
+  "base_name": "info_banks.db",
+  "key_update": "12345",
+  "url_update": "https://cbrates.rbc.ru/bnk/bnk.zip"
+}
